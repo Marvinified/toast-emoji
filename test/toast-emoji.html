@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>toast-emoji test</title>
+
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+
+  <link rel="import" href="../toast-emoji.html">
+</head>
+
+<body>
+
+  <test-fixture id="BasicTestFixture">
+    <template>
+      <toast-emoji type="light" position="center" message="Welcome Jaren, we are exicited to get you started ">
+        </toast-me>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="ChangedPropertyTestFixture">
+    <template>
+      <toast-emoji type="light" hidden position="center" message="Welcome Jaren, we are exicited to get you started ">
+        </toast-me>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('toast-emoji', function () {
+
+      test('instantiating the element with default properties works', function () {
+        var element = fixture('BasicTestFixture');
+        assert.equal(element.prop1, 'toast-emoji');
+        var elementShadowRoot = element.shadowRoot;
+        var elementHeader = elementShadowRoot.querySelector('span.message');
+        assert.equal(elementHeader.textContent, 'Welcome Jaren, we are exicited to get you started ');
+      });
+
+      test('setting a property on the element works', function () {
+        var element = fixture('ChangedPropertyTestFixture');
+        assert.equal(element.type, 'lights');
+        // var elementShadowRoot = element.shadowRoot;
+        // var elementHeader = elementShadowRoot.querySelector('h2');
+        // assert.equal(elementHeader.textContent, 'Hello new-prop1!');
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>

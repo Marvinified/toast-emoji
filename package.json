@@ -1,0 +1,22 @@
+{
+  "name": "toast-emoji",
+  "description": "Toast emoji is a toast web component, that randomly adds an emoji { 😁 } to your toast message.",
+  "main": "toast-emoji.html",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "web-components",
+    "webcomponents"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "install": "polymer install",
+    "start": "polymer serve",
+    "test": "polymer test"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.0.0"
+  }
+}
