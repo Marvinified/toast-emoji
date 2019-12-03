@@ -22,8 +22,12 @@
   <div class="vertical-section-container centered">
     <demo-snippet>
       <template>
-          <toast-emoji position="top-center" type="error" timeout="5000"></toast-emoji>
-        </div>
+        <!-- Default Toast -->
+        <toast-emoji></toast-emoji>
+        <!-- Toast Without timeout -->
+        <toast-emoji position="top-right" type="error"></toast-emoji>
+        <!-- Toast With timeout -->
+        <toast-emoji position="bottom-left" type="success" timeout="5000"></toast-emoji>
       </template>
     </demo-snippet>
   </div>
