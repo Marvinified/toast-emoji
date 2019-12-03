@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>toast-emoji demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../toast-emoji.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <demo-snippet>
+      <template>
+        <!-- Default Toast -->
+        <toast-emoji></toast-emoji>
+        <!-- Toast Without timeout -->
+        <toast-emoji position="top-right" type="error"></toast-emoji>
+        <!-- Toast With timeout -->
+        <toast-emoji position="bottom-left" type="success" timeout="5000"></toast-emoji>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>
