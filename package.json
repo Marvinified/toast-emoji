@@ -3,7 +3,7 @@
   "description": "Toast emoji is a toast web component, that randomly adds an emoji { 😁 } to your toast message.",
   "main": "./src/index.js",
   "module": "main",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "keywords": [
     "web-components",
