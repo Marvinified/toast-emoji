@@ -1,44 +1,66 @@
 # \<toast-emoji\>
 
+[![NPM](https://badgen.net/npm/v/toast-emoji)](https://www.npmjs.com/package/toast-emoji) [![](https://data.jsdelivr.com/v1/package/npm/toast-emoji/badge)](https://www.jsdelivr.com/package/npm/toast-emoji)
+
 Toast emoji is a toast web component, that randomly adds an emoji { 😁 } to your toast message.
 
-<!-- 
-  The next comment block is used by webcomponents.org to enable inline demo.
-  Visit https://www.webcomponents.org/publish for more details.
--->
-<!--
+### How to Use
+
+```js
+import "toast-emoji";
 ```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="toast-emoji.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
+
+Or
+
+```js
+import * from "toast-emoji"
 ```
--->
+
+Or
+
 ```html
-<toast-emoji></toast-emoji>
+<script src="https://cdn.jsdelivr.net/npm/toast-emoji@0.0.1/src/index.min.js"></script>
 ```
 
-## Install the Polymer-CLI
+### Example
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
-```
-$ polymer serve
-```
-
-## Running Tests
-
-```
-$ polymer test
+```html
+<toast-emoji
+  type="sucess"
+  message="This is a demo"
+  position="bottom-left"
+></toast-emoji>
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+### Attributes
 
-## License
+- All attributes are optional
 
-[MIT](https://opensource.org/licenses/MIT)
+| Attribute | Type    | Description                                                                                                                             | Default          |
+| :-------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| type      | String  | The type of toast - can be (success, error, warn, light)                                                                                | `""`             |
+| message   | String  | The message of toast                                                                                                                    | `Hey there!`     |
+| position  | String  | The position of toast on page - can be (top-left, top-right, top-center, left, right, center, bottom-left, bottom-right, bottom-center) | `postion-center` |
+| hidden    | Boolean | The hiding status of the toast.                                                                                                         | `false`          |
+| timeout   | Integer | The time before toast get hidden in millisecons. when empty - (Always visible until user closes toast).                                 | `""`             |
+
+### Events
+
+- `closed` - event is emitted whenever toast get close by user action or by timeout
+
+```javascript
+var toast = document.createElement("toast-emoji");
+
+toast.addEventListener("closed", function() {
+  alert();
+});
+```
+
+### Screenshots
+
+- Dark mode - default
+  ![toast-emoji](./screenshots/screenshoot@2.png)
+- Light mode
+  ![toast-emoji](./screenshots/screenshoot@1.png)
+- Error mode
+  ![toast-emoji](./screenshots/screenshoot@3.png)
