@@ -1,0 +1,46 @@
+{
+    "version": 2,
+    "tags": [
+        {
+            "name": "toast-emoji",
+            "properties": [
+                {
+                    "name": "type",
+                    "type": "String",
+                    "description": "The type of toast - can be (success, error, warn, light)",
+                    "default": ""
+                },
+                {
+                    "name": "message",
+                    "type": "String",
+                    "description": "The message of toast",
+                    "default": "Hey there!"
+                },
+                {
+                    "name": "position",
+                    "type": "String",
+                    "description": "The position of toast on page - can be (top-left, top-right, top-center, left, right, center, bottom-left, bottom-right, bottom-center)",
+                    "default": "Hey there!"
+                },
+                {
+                    "name": "hidden",
+                    "type": "Boolean",
+                    "description": "The hiding status of the toast.",
+                    "default": false
+                },
+                {
+                    "name": "timeout",
+                    "type": "Integer",
+                    "description": "The time before toast get hidden. default is null - (Always visible until user closes toast)",
+                    "default": null
+                }
+            ],
+            "events": [
+                {
+                    "name": "closed",
+                    "description": "event is emitted whenever toast get close by user action or by timeout"
+                }
+            ]
+        }
+    ]
+}
