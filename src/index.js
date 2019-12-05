@@ -244,7 +244,7 @@ template.innerHTML = `
 `;
 
 /**
- * The 
+ * The
  */
 
 class ToastEmoji extends HTMLElement {
@@ -258,7 +258,7 @@ class ToastEmoji extends HTMLElement {
     this._host = this._shadowRoot.host;
     this._render = this._render.bind(this);
     this._pickAnEmoji = this._pickAnEmoji.bind(this);
-    this._hide = this._hide.bind(this)
+    this._hide = this._hide.bind(this);
   }
 
   disconnectedCallback() {
@@ -288,7 +288,7 @@ class ToastEmoji extends HTMLElement {
 
   _hide() {
     this.setAttribute("hidden", "");
-  };
+  }
 
   _pickAnEmoji(type) {
     let emojis = [];
@@ -320,47 +320,59 @@ class ToastEmoji extends HTMLElement {
         emojis = ["🎊", "🌝", "🥳", "🛸", "🤗", "🥰", "🏖"];
         break;
       default:
-        emojis = ["✨", "🧐", "🥳", "🚀", "🎉", "🧙🏻‍♂️", "🧐", "🧞‍♂️", "🚀", "🎉", "🤓", "🤗"];
+        emojis = [
+          "✨",
+          "🧐",
+          "🥳",
+          "🚀",
+          "🎉",
+          "🧙🏻‍♂️",
+          "🧐",
+          "🧞‍♂️",
+          "🚀",
+          "🎉",
+          "🤓",
+          "🤗"
+        ];
         break;
     }
 
     let index = Math.floor(Math.random() * (emojis.length - 1)) + 0;
     return emojis[index];
-  };
+  }
 
   _render() {
-
     this._messageView.textContent =
       this._pickAnEmoji(this._type) + " " + this._message;
 
     this._wrapper.className = "wrapper " + this._type;
 
-    const hostClass = this._host.className ? this._host.className
-      .replace("top-left", "")
-      .replace("top-center", "")
-      .replace("top-right", "")
-      .replace("left", "")
-      .replace("center", "")
-      .replace("right", "")
-      .replace("bottom-left", "")
-      .replace("bottom-center", "")
-      .replace("undefined", "")
-      .replace("bottom-right", "") : ""
-    const className = hostClass
-      + " " + this._position;
-    this._host.className = className
-
-
+    const hostClass = this._host.className
+      ? this._host.className
+          .replace("top-left", "")
+          .replace("top-center", "")
+          .replace("top-right", "")
+          .replace("left", "")
+          .replace("center", "")
+          .replace("right", "")
+          .replace("bottom-left", "")
+          .replace("bottom-center", "")
+          .replace("undefined", "")
+          .replace("bottom-right", "")
+      : "";
+    const className = hostClass + " " + this._position;
+    this._host.className = className;
 
     if (this._timeout) {
       this.removeAttribute("hidden");
-      clearTimeout(this._timer)
+      console.log(this._timer);
+      clearTimeout(this._timer);
       this._timer = setTimeout(this._hide, this._timeout);
     }
   }
 
   static get observedAttributes() {
-    return ["message", "type", "position", "timeout"];
+    return ["message", "type", "position", "timeout", "hidden"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -368,25 +380,39 @@ class ToastEmoji extends HTMLElement {
       switch (name) {
         case "message":
           this._message = newValue;
+          this._render();
           break;
+
         case "type":
           this._type = newValue;
+          this._render();
           break;
+
         case "position":
           this._position = newValue;
+          this._render();
           break;
+
         case "timeout":
           this._timeout = parseInt(newValue, 10);
+          this._render();
+          break;
+
+        case "hidden":
+          this.hidden =
+            this.hasAttribute("hidden") &&
+            this.getAttribute("hidden") !== "false";
           break;
         default:
           break;
       }
-      this._render();
     }
   }
 
   get hidden() {
-    return this.hasAttribute("hidden");
+    return (
+      this.hasAttribute("hidden") && this.getAttribute("hidden") !== "false"
+    );
   }
 
   set hidden(val) {
@@ -406,8 +432,6 @@ matrialIconsStyle.setAttribute(
 );
 document.querySelector("head").appendChild(matrialIconsStyle);
 
-
-if (!customElements.get('toast-emoji')) {
+if (!customElements.get("toast-emoji")) {
   customElements.define("toast-emoji", ToastEmoji);
 }
-
