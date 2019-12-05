@@ -32,6 +32,12 @@ Or
 ></toast-emoji>
 ```
 
+#### See demo
+
+- React Demo - https://codesandbox.io/embed/sharp-frost-0qny8?fontsize=14&hidenavigation=1&theme=dark
+
+- Vue Demo - (In progress)
+
 ### Attributes
 
 - All attributes are optional
