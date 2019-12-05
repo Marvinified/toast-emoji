@@ -329,12 +329,28 @@ class ToastEmoji extends HTMLElement {
   };
 
   _render() {
+
     this._messageView.textContent =
       this._pickAnEmoji(this._type) + " " + this._message;
-    this._wrapper.className = "wrapper " + this._type;
-    this._host.className = this._host.className + " " + this._position;
 
-    console.log({ set: this._timer });
+    this._wrapper.className = "wrapper " + this._type;
+
+    const hostClass = this._host.className ? this._host.className
+      .replace("top-left", "")
+      .replace("top-center", "")
+      .replace("top-right", "")
+      .replace("left", "")
+      .replace("center", "")
+      .replace("right", "")
+      .replace("bottom-left", "")
+      .replace("bottom-center", "")
+      .replace("undefined", "")
+      .replace("bottom-right", "") : ""
+    const className = hostClass
+      + " " + this._position;
+    this._host.className = className
+
+
 
     if (this._timeout) {
       this._timer = setTimeout(this._hide, this._timeout);
