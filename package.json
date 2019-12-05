@@ -3,7 +3,7 @@
   "description": "Toast emoji is a toast web component, that randomly adds an emoji { 😁 } to your toast message.",
   "main": "./src/index.js",
   "module": "main",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "license": "MIT",
   "homepage": "https://github.com/marvinified/toast-emoji#README.md",
   "url": "https://github.com/marvinified/toast-emoji/issues",

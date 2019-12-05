@@ -353,6 +353,8 @@ class ToastEmoji extends HTMLElement {
 
 
     if (this._timeout) {
+      this.removeAttribute("hidden");
+      clearTimeout(this._timer)
       this._timer = setTimeout(this._hide, this._timeout);
     }
   }
